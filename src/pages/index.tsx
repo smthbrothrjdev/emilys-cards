@@ -24,7 +24,12 @@ const CreateFlashCard = () => {
           className="grow bg-transparent text-3xl outline-none"
         />
       ) : (
-        <button type="button"> Play </button>
+        <button
+          type="button"
+          className="justify-center rounded-3xl border-4 border-double border-purple-500 bg-purple-700 pr-5 text-3xl "
+        >
+          😀🎮 Play Normal
+        </button>
       )}
     </div>
   );
