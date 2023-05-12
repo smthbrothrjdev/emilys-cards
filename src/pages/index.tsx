@@ -11,7 +11,7 @@ const CreateFlashCard = () => {
   if (!user) return null;
 
   return (
-    <div className="flex w-full gap-4">
+    <div className="flex w-full gap-4 justify-between">
       <img
         src={user.profileImageUrl}
         alt="user profile image"
