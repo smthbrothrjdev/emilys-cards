@@ -59,7 +59,7 @@ const Home: NextPage = () => {
             {user.isSignedIn && <CreateFlashCard />}
           </div>
           <div className="flex flex-col text-2xl">
-            {data?.map((card) => (
+            {user.isSignedIn ? data?.map((card) => (
               <>
                 <div className=" bg-fuchsia-300 border-purple-400 p-8 border shadow shadow-pink-900" key={card.id}>
                   {card.word}
@@ -67,7 +67,7 @@ const Home: NextPage = () => {
                 </div>
                 <div className="py-2"></div>
               </>
-            ))}
+            )) : null}
 
           </div>
         </div>
