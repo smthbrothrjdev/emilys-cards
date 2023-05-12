@@ -49,21 +49,26 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex h-screen justify-center">
-        <div className="h-full w-full border-x border-purple-400 bg-fuchsia-300 md:max-w-2xl">
-          <div className="justify-center border-b border-purple-400 p-4">
+        <div className="h-full w-full md:max-w-2xl">
+          <div className="flex justify-center bg-transparent p-4">
             {!user.isSignedIn && (
-              <div className="flex justify-center">
+              <div className="flex justify-center w-1/3 bg-fuchsia-500 text-3xl rounded-3xl ">
                 <SignInButton />
               </div>
             )}
             {user.isSignedIn && <CreateFlashCard />}
           </div>
-          <div className="flex flex-col text-2xl ">
+          <div className="flex flex-col text-2xl">
             {data?.map((card) => (
-              <div className="border-b border-purple-400 p-8" key={card.id}>
-                {card.word}
-              </div>
+              <>
+                <div className=" bg-fuchsia-300 border-purple-400 p-8 border shadow shadow-pink-900" key={card.id}>
+                  {card.word}
+
+                </div>
+                <div className="py-2"></div>
+              </>
             ))}
+
           </div>
         </div>
       </main>
