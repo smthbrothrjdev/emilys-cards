@@ -28,6 +28,7 @@ const CreateFlashCard = () => {
             }
           }
         }} />)}
+
       {organizationList &&
       organizationList[0]?.organization.name === "Admins" ? (
         <input

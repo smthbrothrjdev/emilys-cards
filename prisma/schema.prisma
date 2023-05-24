@@ -11,7 +11,6 @@ datasource db {
   relationMode = "prisma"
 }
 
-
 model Example {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
@@ -19,12 +18,18 @@ model Example {
 }
 
 model Wordcard {
-  id        String   @id @default(cuid())
-  word      String   @db.VarChar(255)
-  set       Int?
+  id        String      @id @default(cuid())
+  word      String      @db.VarChar(255)
+  set       WordCardSet @relation(fields: [setId], references: [id])
+  setId     Int
   authorId  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
 
-  @@index([set])
+  @@index([setId])
+}
+
+model WordCardSet {
+  id        Int        @id
+  wordCards Wordcard[]
 }
