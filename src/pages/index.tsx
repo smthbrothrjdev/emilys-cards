@@ -1,6 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import { SignInButton, useOrganizationList, useUser } from "@clerk/nextjs";
+import { SignInButton, useOrganizationList, UserButton, useUser } from "@clerk/nextjs";
 
 import { api } from "~/utils/api";
 
@@ -10,13 +10,24 @@ const CreateFlashCard = () => {
 
   if (!user) return null;
 
+  console.log(organizationList);
   return (
     <div className="flex w-full gap-4 justify-between">
-      <img
-        src={user.profileImageUrl}
-        alt="user profile image"
-        className="h-20 w-20 rounded-full"
-      />
+      {organizationList &&
+      organizationList[0]?.organization.name === "users" ? (
+        <img
+          src={user.profileImageUrl}
+          alt="user profile image"
+          className="h-20 w-20 rounded-full"
+        />) : (
+        <UserButton appearance={{
+          elements: {
+            userButtonAvatarBox: {
+              width: 80,
+              height: 80
+            }
+          }
+        }} />)}
       {organizationList &&
       organizationList[0]?.organization.name === "Admins" ? (
         <input
